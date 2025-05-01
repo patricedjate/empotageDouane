@@ -35,6 +35,7 @@ class UserCrudController extends AbstractCrudController
             TextField::new('nom'),
             TextField::new('prenom'),
             TextField::new('contact'),
+            TextField::new('password'),
             DateTimeField::new('date')->onlyOnDetail(),
         ];
     }

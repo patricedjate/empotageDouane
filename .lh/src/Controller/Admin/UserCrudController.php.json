@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 11,
+            "activePatchIndex": 12,
             "patches": [
                 {
                     "date": 1674460181578,
@@ -52,6 +52,10 @@
                 {
                     "date": 1676992647228,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,8 +10,9 @@\n use EasyCorp\\Bundle\\EasyAdminBundle\\Field\\ArrayField;\n use EasyCorp\\Bundle\\EasyAdminBundle\\Field\\DateTimeField;\n use EasyCorp\\Bundle\\EasyAdminBundle\\Field\\TextEditorField;\n use EasyCorp\\Bundle\\EasyAdminBundle\\Controller\\AbstractCrudController;\n+use EasyCorp\\Bundle\\EasyAdminBundle\\Field\\ImageField;\n \n class UserCrudController extends AbstractCrudController\n {\n     public static function getEntityFqcn(): string\n"
+                },
+                {
+                    "date": 1746029799950,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -34,8 +34,9 @@\n             ArrayField::new('roles'),\n             TextField::new('nom'),\n             TextField::new('prenom'),\n             TextField::new('contact'),\n+            TextField::new('password'),\n             DateTimeField::new('date')->onlyOnDetail(),\n         ];\n     }\n     \n"
                 }
             ],
             "date": 1674460181578,

@@ -4834,16 +4834,16 @@
         },
         {
             "name": "symfony/mailer",
-            "version": "v6.2.5",
+            "version": "v6.2.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/mailer.git",
-                "reference": "29729ac0b4e5113f24c39c46746bd6afb79e0aaa"
+                "reference": "47cfaeba096eec5d1aee117f2acbab8e8a8573e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/mailer/zipball/29729ac0b4e5113f24c39c46746bd6afb79e0aaa",
-                "reference": "29729ac0b4e5113f24c39c46746bd6afb79e0aaa",
+                "url": "https://api.github.com/repos/symfony/mailer/zipball/47cfaeba096eec5d1aee117f2acbab8e8a8573e5",
+                "reference": "47cfaeba096eec5d1aee117f2acbab8e8a8573e5",
                 "shasum": ""
             },
             "require": {
@@ -4863,7 +4863,7 @@
             },
             "require-dev": {
                 "symfony/console": "^5.4|^6.0",
-                "symfony/http-client-contracts": "^1.1|^2|^3",
+                "symfony/http-client": "^5.4|^6.0",
                 "symfony/messenger": "^6.2",
                 "symfony/twig-bridge": "^6.2"
             },
@@ -4893,7 +4893,7 @@
             "description": "Helps sending emails",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/mailer/tree/v6.2.5"
+                "source": "https://github.com/symfony/mailer/tree/v6.2.12"
             },
             "funding": [
                 {
@@ -4909,7 +4909,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-01-10T18:53:53+00:00"
+            "time": "2023-05-29T12:46:33+00:00"
         },
         {
             "name": "symfony/messenger",
@@ -10003,16 +10003,16 @@
         },
         {
             "name": "symfony/debug-bundle",
-            "version": "v6.2.1",
+            "version": "v6.2.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug-bundle.git",
-                "reference": "d87ef905baa453646a6e633690c184998e573e10"
+                "reference": "f48bf7c1bd1b5ac946599970b94b1087cfebed5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/debug-bundle/zipball/d87ef905baa453646a6e633690c184998e573e10",
-                "reference": "d87ef905baa453646a6e633690c184998e573e10",
+                "url": "https://api.github.com/repos/symfony/debug-bundle/zipball/f48bf7c1bd1b5ac946599970b94b1087cfebed5e",
+                "reference": "f48bf7c1bd1b5ac946599970b94b1087cfebed5e",
                 "shasum": ""
             },
             "require": {
@@ -10061,7 +10061,7 @@
             "description": "Provides a tight integration of the Symfony VarDumper component and the ServerLogCommand from MonologBridge into the Symfony full-stack framework",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/debug-bundle/tree/v6.2.1"
+                "source": "https://github.com/symfony/debug-bundle/tree/v6.2.13"
             },
             "funding": [
                 {
@@ -10077,7 +10077,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-12-05T06:41:34+00:00"
+            "time": "2023-07-13T14:28:09+00:00"
         },
         {
             "name": "symfony/dom-crawler",
@@ -10465,5 +10465,5 @@
         "ext-iconv": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
