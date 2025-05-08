@@ -13,6 +13,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
@@ -25,6 +26,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Vich\UploadableField(mapping: 'douane', fileNameProperty: 'imageName')]
   
     #[ORM\Column(length: 180, unique: true)]
+    #[Assert\NotBlank(message: 'L\'email est requis.')]
+    #[Assert\Email(
+        message: 'L\'email "{{ value }}" n\'est pas un email valide.',
+        mode: 'strict'
+    )]
     private ?string $email = null;
 
     #[ORM\Column]
@@ -43,6 +49,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $prenom = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Le numéro de téléphone est requis.')]
+    #[Assert\Regex(
+        pattern: '/^(?:\+225|0)(01|05|07)\d{8}$/',
+        message: 'Le numéro doit être un numéro ivoirien valide (ex: 0102030405 ou +2250102030405).'
+    )]
     private ?string $contact = null;
 
     #[ORM\Column]

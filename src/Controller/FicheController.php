@@ -62,7 +62,7 @@ class FicheController extends AbstractController
 
         return $this->renderForm('chef/fiche/edit.html.twig', [
             'fiche' => $fiche,
-            'form' => $form,²
+            'form' => $form,
         ]);
     }
 

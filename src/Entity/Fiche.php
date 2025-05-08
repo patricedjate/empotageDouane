@@ -15,6 +15,8 @@ class Fiche
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
+    #[ORM\Column(length: 255)]
+    private ?string $num_fiche = null;
     #[Vich\UploadableField(mapping: 'douane', fileNameProperty: 'imageName')]
     private ?File $imageFile = null;
 
@@ -72,6 +74,17 @@ class Fiche
     public function getId(): ?int
     {
         return $this->id;
+    }
+    public function setNumFiche(string $num_fiche): self
+    {
+        $this->num_fiche = $num_fiche;
+
+        return $this;
+    }
+
+    public function getNumFiche(): ?string
+    {
+        return $this->num_fiche;
     }
     public function setImageFile(?File $imageFile = null): void
     {

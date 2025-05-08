@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
 class RegistrationFormType extends AbstractType
 {
@@ -36,6 +37,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+            /*
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
@@ -59,6 +61,38 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+                */
+                ->add('plainPassword', RepeatedType::class, [
+                    
+                    'type' => PasswordType::class,
+                    'invalid_message' => 'Les mots de passe doivent correspondre.',
+                    'options' => ['attr' => ['autocomplete' => 'new-password']],
+                    'required' => true,
+                    'first_options'  => [
+                        'label' => 'Mot de passe',
+                        "label_attr"=>[
+                "class"=>"focus-label"
+            ],
+            "attr"=>[
+                "class"=>"form-control floating"
+            ],
+                        'constraints' => [
+                            new NotBlank([
+                                'message' => 'Veuillez saisir un mot de passe',
+                            ]),
+                            new Length([
+                                'min' => 6,
+                                'minMessage' => 'Votre mot de passe doit comporter au moins {{ limit }} caractères',
+                                'max' => 4096,
+                            ]),
+                        ],
+                    ],
+                    'second_options' => ['label' => 'Confirmez le mot de passe',
+                    "attr"=>[
+                        "class"=>"form-control floating"
+                    ],],
+                    'mapped' => false,
+                ])
             ->add('nom',TextType::class,[
                 "attr"=>[
                     "class"=>"form-control floating"
@@ -81,12 +115,16 @@ class RegistrationFormType extends AbstractType
             ->add('contact',TextType::class,
             [
                 "attr"=>[
-                    "class"=>"form-control floating"
+                    "class"=>"form-control floating",
+                    'placeholder' => 'Ex: 0102030405 ou +2250102030405',
                 ],
                 "label_attr"=>[
                     "class"=>"focus-label"
                 ],
-                "label"=>"Contact"
+                "label"=>"Contact",
+                'required' => true,
+                'data' => '+225',
+
             ])
             
         ;

@@ -10,6 +10,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Component\Mime\Address;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
@@ -36,8 +38,8 @@ class RegistrationController extends AbstractController
             );
               // ✅ Récupérer l'email de l'utilisateur
               $emailAddress = $user->getEmail();
-            $email = (new Email())
-            ->from('DoouaneIvoirienne@gmail.com')
+            $email = (new TemplatedEmail())
+            ->from(new Address('patricedjate8@gmail.com', 'Empotage Douanes Ivoiriennes'))
             ->to($emailAddress)
             ->subject('Confirmation d’inscription à la plateforme de gestion de la procédure d’empotage')
             ->text('Bonjour, ceci est un email de test.')
@@ -75,12 +77,12 @@ class RegistrationController extends AbstractController
             
             $this->addFlash('success', 'Inscription effectué avec succèss. veuillez contacter l\'administrateur
              pour l\'attribution de vos droits d\'accès');
-           
+             return $this->redirectToRoute('app_login');
         }
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
-        return $this->redirectToRoute('app_login');
+       
     }
 }

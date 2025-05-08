@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 7,
+            "activePatchIndex": 9,
             "patches": [
                 {
                     "date": 1674461721716,
@@ -36,6 +36,14 @@
                 {
                     "date": 1674463337609,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,5 +5,5 @@\n     mappings:\n         products:\n           uri_prefix: /images/douane\n           upload_destination: '%kernel.project_dir%/public/images/douane'\n-        namer: Vich\\UploaderBundle\\Naming\\SmartUniqueNamer\n+          namer: Vich\\UploaderBundle\\Naming\\SmartUniqueNamer\n"
+                },
+                {
+                    "date": 1746686036581,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,11 @@\n vich_uploader:\n     db_driver: orm\n+\n     metadata:\n         type: attribute\n+\n     mappings:\n-        products:\n-          uri_prefix: /images/douane\n-          upload_destination: '%kernel.project_dir%/public/images/douane'\n-          namer: Vich\\UploaderBundle\\Naming\\SmartUniqueNamer\n+        douane:\n+            uri_prefix: /uploads/pdfs\n+            upload_destination: '%kernel.project_dir%/public/images/douane'\n+            namer: Vich\\UploaderBundle\\Naming\\SmartUniqueNamer\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1746686093647,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,6 +6,6 @@\n \n     mappings:\n         douane:\n             uri_prefix: /uploads/pdfs\n-            upload_destination: '%kernel.project_dir%/public/images/douane'\n+            upload_destination: '%kernel.project_dir%/public/uploads/pdfs'\n             namer: Vich\\UploaderBundle\\Naming\\SmartUniqueNamer\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1674461721716,
