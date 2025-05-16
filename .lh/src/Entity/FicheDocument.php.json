@@ -1,0 +1,34 @@
+{
+    "sourceFile": "src/Entity/FicheDocument.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1747118392528,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1747118405728,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,8 +3,10 @@\n namespace App\\Entity;\n \n use App\\Repository\\FicheDocumentRepository;\n use Doctrine\\ORM\\Mapping as ORM;\n+use Symfony\\Component\\HttpFoundation\\File\\File;\n+use Vich\\UploaderBundle\\Mapping\\Annotation as Vich;\n \n #[ORM\\Entity(repositoryClass: FicheDocumentRepository::class)]\n class FicheDocument\n {\n"
+                },
+                {
+                    "date": 1747118424450,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -37,5 +37,10 @@\n         $this->fileName = $fileName;\n \n         return $this;\n     }\n+     /**\n+     * @ORM\\ManyToOne(targetEntity=Fiche::class, inversedBy=\"documents\")\n+     * @ORM\\JoinColumn(nullable=false)\n+     */\n+    private ?Fiche $fiche = null;\n }\n"
+                },
+                {
+                    "date": 1747118558449,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,46 @@\n+<?php\n+\n+namespace App\\Entity;\n+\n+use App\\Repository\\FicheDocumentRepository;\n+use Doctrine\\ORM\\Mapping as ORM;\n+use Symfony\\Component\\HttpFoundation\\File\\File;\n+use Vich\\UploaderBundle\\Mapping\\Annotation as Vich;\n+\n+#[ORM\\Entity(repositoryClass: FicheDocumentRepository::class)]\n+class FicheDocument\n+{\n+    #[ORM\\Id]\n+    #[ORM\\GeneratedValue]\n+    #[ORM\\Column]\n+    private ?int $id = null;\n+\n+    #[ORM\\Column(length: 255, nullable: true)]\n+    private ?string $fileName = null;\n+    /**\n+     * @Vich\\UploadableField(mapping=\"fiches_pdf\", fileNameProperty=\"fileName\")\n+     */\n+    private ?File $pdfFile = null;\n+\n+    public function getId(): ?int\n+    {\n+        return $this->id;\n+    }\n+\n+    public function getFileName(): ?string\n+    {\n+        return $this->fileName;\n+    }\n+\n+    public function setFileName(?string $fileName): self\n+    {\n+        $this->fileName = $fileName;\n+\n+        return $this;\n+    }\n+     \n+      #[ORM\\ManyToOne(targetEntity=Fiche::class, inversedBy=\"documents\")]\n+      #[ORM\\JoinColumn(nullable=false)]\n+     \n+    private ?Fiche $fiche = null;\n+}\n"
+                },
+                {
+                    "date": 1747118702126,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,35 @@\n+<?php\n+\n+namespace App\\Entity;\n+\n+use App\\Repository\\FicheDocumentRepository;\n+use Doctrine\\ORM\\Mapping as ORM;\n+\n+#[ORM\\Entity(repositoryClass: FicheDocumentRepository::class)]\n+class FicheDocument\n+{\n+    #[ORM\\Id]\n+    #[ORM\\GeneratedValue]\n+    #[ORM\\Column]\n+    private ?int $id = null;\n+\n+    #[ORM\\Column(length: 255, nullable: true)]\n+    private ?string $fileName = null;\n+\n+    public function getId(): ?int\n+    {\n+        return $this->id;\n+    }\n+\n+    public function getFileName(): ?string\n+    {\n+        return $this->fileName;\n+    }\n+\n+    public function setFileName(?string $fileName): self\n+    {\n+        $this->fileName = $fileName;\n+\n+        return $this;\n+    }\n+}\n"
+                }
+            ],
+            "date": 1747118392528,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Entity;\n\nuse App\\Repository\\FicheDocumentRepository;\nuse Doctrine\\ORM\\Mapping as ORM;\n\n#[ORM\\Entity(repositoryClass: FicheDocumentRepository::class)]\nclass FicheDocument\n{\n    #[ORM\\Id]\n    #[ORM\\GeneratedValue]\n    #[ORM\\Column]\n    private ?int $id = null;\n\n    #[ORM\\Column(length: 255, nullable: true)]\n    private ?string $fileName = null;\n    /**\n     * @Vich\\UploadableField(mapping=\"fiches_pdf\", fileNameProperty=\"fileName\")\n     */\n    private ?File $pdfFile = null;\n\n    public function getId(): ?int\n    {\n        return $this->id;\n    }\n\n    public function getFileName(): ?string\n    {\n        return $this->fileName;\n    }\n\n    public function setFileName(?string $fileName): self\n    {\n        $this->fileName = $fileName;\n\n        return $this;\n    }\n}\n"
+        }
+    ]
+}

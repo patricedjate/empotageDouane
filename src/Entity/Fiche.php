@@ -19,7 +19,8 @@ class Fiche
     private ?string $num_fiche = null;
     #[Vich\UploadableField(mapping: 'douane', fileNameProperty: 'imageName')]
     private ?File $imageFile = null;
-
+    #[ORM\Column(type: "json", nullable: true)]
+    private ?array $pdfFiles = [];
     #[ORM\Column(type: 'string')]
     private ?string $imageName = null;
 
@@ -276,6 +277,17 @@ class Fiche
     public function setCda(?user $cda): self
     {
         $this->cda = $cda;
+
+        return $this;
+    }
+    public function getPdfFiles(): ?array
+    {
+        return $this->pdfFiles;
+    }
+
+    public function setPdfFiles(?array $pdfFiles): self
+    {
+        $this->pdfFiles = $pdfFiles;
 
         return $this;
     }

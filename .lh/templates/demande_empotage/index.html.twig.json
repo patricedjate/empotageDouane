@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 100,
+            "activePatchIndex": 101,
             "patches": [
                 {
                     "date": 1674548932209,
@@ -408,6 +408,10 @@
                 {
                     "date": 1674816618092,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -78,13 +78,14 @@\n \t\t\t\t\t\t\t\t\t</div>\n \t\t\t\t\t\t\t\t\t<div class=\"col\">\n \t\t\t\t\t\t\t\t\t\t{{ form_row(form.nplombs) }}\n \t\t\t\t\t\t\t\t\t</div>\n-\t\t\t\t\t\t\t\t</div>\n-\t\t\t\t\t\t\t\t<div class=\"change-photo-btn mt-3\">\n+\t\t\t\t\t\t\t\t\t<div class=\"col change-photo-btn mt-3\">\n \t\t\t\t\t\t\t\t<span> <i class=\"fa fa-upload\"></i>Upload BLC </span>\n \t\t\t\t\t\t\t\t{{form_row(form.imageFile)}}\n \t\t\t\t\t\t\t\t</div>\n+\t\t\t\t\t\t\t\t</div>\n+\t\t\t\t\t\t\t\t\n \t\t\t\t\t\t\t</div>\n \t\t\t\t\t\t\t<div class=\"container\">\n \t\t\t\t\t\t\t\t{{ form_row(form.Submit) }}\n \t\t\t\t\t\t\t\t</div> \n"
+                },
+                {
+                    "date": 1747376472345,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,12 +1,9 @@\n-{% extends 'base.html.twig' %}\n-\n+{% extends 'CDADashboardBase.html.twig' %}\n {% block title %}Formulaire demande d'empotage\n {% endblock %}\n-\n {% block body %}\n-\t<div class=\"container mt-5\">\n-\t\t<div class=\"row\">\n+\t\n \t\t\t<div class=\"col\">\n \t\t\t\t<p>ministere du budget et du\n \t\t\t\t\t<br>\n \t\t\t\t\tportefeuille de l'etat\n@@ -15,9 +12,9 @@\n \t\t\t\t\t\t\t<br>\n \t\t\t\t\t\t\tdirection generale des douanes\n \t\t\t\t\t\t\t<br><span class=\"text-center\">----------<span><br>\n \t\t\t\t\t\t\t\t\tdirection des services douaniers \n-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t            du port et des services speciaux\n+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t            du port et des services speciaux\n \t\t\t\t\t\t\t\t\t<br>\n \t\t\t\t\t\t\t\t\tsous direction des service\n \t\t\t\t\t\t\t\t\t<br>\n \t\t\t\t\t\t\t\t\tdouaniers du port\n@@ -79,15 +76,17 @@\n \t\t\t\t\t\t\t\t\t<div class=\"col\">\n \t\t\t\t\t\t\t\t\t\t{{ form_row(form.nplombs) }}\n \t\t\t\t\t\t\t\t\t</div>\n \t\t\t\t\t\t\t\t\t<div class=\"col change-photo-btn mt-3\">\n-\t\t\t\t\t\t\t\t<span> <i class=\"fa fa-upload\"></i>Upload BLC </span>\n-\t\t\t\t\t\t\t\t{{form_row(form.imageFile)}}\n-\t\t\t\t\t\t\t\t</div>\n-\t\t\t\t\t\t\t\t</div>\n+\t\t\t\t\t\t\t\t\t\t<span>\n+\t\t\t\t\t\t\t\t\t\t\t<i class=\"fa fa-upload\"></i>Upload BLC\n+\t\t\t\t\t\t\t\t\t\t</span>\n+\t\t\t\t\t\t\t\t\t\t{{form_row(form.pdfFiles)}}\n+\t\t\t\t\t\t\t\t\t</div>\n \t\t\t\t\t\t\t\t\n-\t\t\t\t\t\t\t</div>\n+\n+\n \t\t\t\t\t\t\t<div class=\"container\">\n \t\t\t\t\t\t\t\t{{ form_row(form.Submit) }}\n-\t\t\t\t\t\t\t\t</div> \n+\t\t\t\t\t\t\t</div>\n \t\t\t\t\t\t\t{{ form_end(form) }}\n \t\t\t\t\t\t{% endblock %}\n"
                 }
             ],
             "date": 1674548932209,
