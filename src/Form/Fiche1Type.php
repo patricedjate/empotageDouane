@@ -23,7 +23,6 @@ class Fiche1Type extends AbstractType
             ->add('nconteneurs')
             ->add('typeTC')
             ->add('nplombs')
-            ->add('imageFile',VichImageType::class)
             ->add('date')
         ;
     }

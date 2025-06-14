@@ -84,6 +84,13 @@ public function findNbre()
             ->getQuery()
             ->getResult();
    }
+   public function findAllFicheByCda($value) : array{
+        return $this->createQueryBuilder('r')
+          ->andWhere('r.cda = :val')
+            ->setParameter('val',$value)
+            ->getQuery()
+            ->getResult();
+   }
    public function findAllFicheEffectueByUser($value): array{
     return $this->createQueryBuilder('r')
         ->andWhere('r.user = :val and r.statut = true')
@@ -107,6 +114,7 @@ public function findNbre()
             ->getQuery()
             ->getResult();
    }
+   
    public function finduserBy(): ?Fiche
    {
     return $this->createQueryBuilder('r')

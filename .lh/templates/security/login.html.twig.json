@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 38,
+            "activePatchIndex": 39,
             "patches": [
                 {
                     "date": 1674456556697,
@@ -160,6 +160,10 @@
                 {
                     "date": 1677484269265,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -37,9 +37,9 @@\n \t</style>\n {% endblock %}\n {% block body %}\n <div class=\"bg-image\"></div>\n-\n+<div class=\"bg-text\">\n \t<div class=\"container py-5 h-100\">\n \t\t<div class=\"row d-flex justify-content-center align-items-center h-100\">\n \t\t\t<div class=\"col col-xl-10\">\n \t\t\t\t<div class=\"card\" style=\"border-radius: 1rem;\">\n"
+                },
+                {
+                    "date": 1747810890274,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -97,9 +97,9 @@\n \t\t\t\t\t\t\t\t\t\t\tConnexion\n \t\t\t\t\t\t\t\t\t\t</button>\n \t\t\t\t\t\t\t\t\t</div>\n \n-\t\t\t\t\t\t\t\t\t<a class=\"small text-muted\" href=\"#!\">Mot de passe oubliée?</a>\n+\t\t\t\t\t\t\t\t\t<a class=\"small text-muted\" href=\"{{path(\"app_forgot_password_request\")}}\">Mot de passe oubliée?</a>\n \t\t\t\t\t\t\t\t\t<p class=\"mb-5 pb-lg-2\" style=\"color: #393f81;\">\n \t\t\t\t\t\t\t\t\t\t<a href=\"{{path(\"app_register\")}}\">Vous n'avez pas de compte?</a>\n \t\t\t\t\t\t\t\t\t</p>\n \n"
                 }
             ],
             "date": 1674456556697,

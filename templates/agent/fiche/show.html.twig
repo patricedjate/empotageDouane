@@ -114,12 +114,20 @@
 									</p>
 								</div>
 							</div>
+							{% for fichier in fiche.fichiers %}
+    <div style="margin-bottom: 1em;">
+        <p><strong>{{ fichier }}</strong></p>
+        <iframe src="{{ asset('uploads/pdfs/' ~ fichier) }}"
+                width="100%" height="500px" style="border: 1px solid #ccc;"></iframe>
+        <a href="{{ asset('uploads/pdfs/' ~ fichier) }}" target="_blank">Ouvrir dans un nouvel onglet</a>
+    </div>
+{% endfor %}
 							<div class="row mb-3 mt-4">
 								<div class="col">
-									<a href="{{ path('agent_ListeFiche') }}" class="btn btn-warning ">Revenir à la liste</a>
+									<a href="{{ path('agent_ListeFiche') }}" class="btn btn-warning mb-5 ">Revenir à la liste</a>
 								</div>
 								<div class="col">
-                                <a href="{{path("edit_RapportEmpotage",{'id':fiche.id}) }}" class="btn btn-success">Rediger le rapport</a>
+                                <a href="{{path("edit_RapportEmpotage",{'id':fiche.id}) }}" class="btn btn-success mb-5">Rediger le rapport</a>
                                 </div>
 							</div>
 						{% endblock %}

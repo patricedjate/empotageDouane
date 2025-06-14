@@ -478,7 +478,7 @@ class ComposerStaticInit3dce89a11832839c27955c8ad6a0501e
         ),
         'Svg\\' => 
         array (
-            0 => __DIR__ . '/..' . '/phenx/php-svg-lib/src/Svg',
+            0 => __DIR__ . '/..' . '/dompdf/php-svg-lib/src/Svg',
         ),
         'Sensio\\Bundle\\FrameworkExtraBundle\\' => 
         array (
@@ -546,7 +546,7 @@ class ComposerStaticInit3dce89a11832839c27955c8ad6a0501e
         ),
         'FontLib\\' => 
         array (
-            0 => __DIR__ . '/..' . '/phenx/php-font-lib/src/FontLib',
+            0 => __DIR__ . '/..' . '/dompdf/php-font-lib/src/FontLib',
         ),
         'Egulias\\EmailValidator\\' => 
         array (

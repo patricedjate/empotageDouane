@@ -1,0 +1,82 @@
+{% extends 'CDADashboardBase.html.twig' %}
+{% block title %}Liste des demandes d'empotage
+{% endblock %}
+{% block stylesheets %}
+{{ parent() }}
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" />
+{% endblock %}
+{% block body %}
+	
+			<div class="col">
+				<p>ministere du budget et du
+					<br>
+					portefeuille de l'etat
+					<br>
+					<span class="text-center">----------<span>
+							<br>
+							direction generale des douanes
+							<br><span class="text-center">----------<span><br>
+									direction des services douaniers 
+																																										            du port et des services speciaux
+									<br>
+									sous direction des service
+									<br>
+									douaniers du port
+									<br><span class="text-center">----------<span><br>
+											bureau export</p>
+									</div>
+									<div class="col">
+										<img src="{{asset("assets/img/logoDouane.png")}}" class="rounded mx-auto d-block" alt="..." width="80px">
+									</div>
+									<div class="col">
+										<p>republique de côte d'ivoire</p>
+										<p>Union - Discipline - Travail</p>
+									</div>
+								</div>
+								 <h3>Liste des fiches de demande d'empotage</h3>
+
+    <table class="table"  id='table1'>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom cda</th>
+                <th>Nom exportateur</th>
+                <th>Nature marchandise</th>
+                <th>Date</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for fiche in fiches %}
+            <tr>
+                <td>{{ fiche.id }}</td>
+                <td>{{ fiche.nomCda }}</td>
+                <td>{{ fiche.nomExportateur }}</td>
+                <td>{{ fiche.natureMarchandise }}</td>
+                <td>{{ fiche.date ? fiche.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('cda_fiche_show', {'id': fiche.id}) }}" class="me-3"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+  <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+  <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+</svg></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">Aucun Enregistrement Trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+						{% endblock %}
+{% block script %}
+{{ parent() }}
+
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<script>
+	$(document).ready(function () {
+    $('#table1').DataTable();
+});
+</script>
+{% endblock %}

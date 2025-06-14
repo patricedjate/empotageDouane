@@ -1,0 +1,30 @@
+{
+    "sourceFile": "templates/reset_password/check_email.html.twig",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1747813525473,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1747813539609,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,11 @@\n+{% extends 'base.html.twig' %}\n+\n+{% block title %}Password Reset Email Sent{% endblock %}\n+\n+{% block body %}\n+    <p>\n+        Si un compte correspondant à votre adresse e-mail existe, un e-mail contenant un lien vous permettant de réinitialiser votre mot de passe vient de vous être envoyé.\n+Ce lien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.\n+    </p>\n+    <p>Si vous ne recevez pas d'e-mail, veuillez vérifier votre dossier spam ou <a href=\"{{ path('app_forgot_password_request') }}\">try again</a>.</p>\n+{% endblock %}\n"
+                },
+                {
+                    "date": 1747813554064,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,11 @@\n+{% extends 'base.html.twig' %}\n+\n+{% block title %}Password Reset Email Sent{% endblock %}\n+\n+{% block body %}\n+    <p>\n+        Si un compte correspondant à votre adresse e-mail existe, un e-mail contenant un lien vous permettant de réinitialiser votre mot de passe vient de vous être envoyé.\n+Ce lien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.\n+    </p>\n+    <p>Si vous ne recevez pas d'e-mail, veuillez vérifier votre dossier spam ou <a href=\"{{ path('app_forgot_password_request') }}\">essayer à nouveau</a>.</p>\n+{% endblock %}\n"
+                },
+                {
+                    "date": 1747813582081,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,11 @@\n+{% extends 'base.html.twig' %}\n+\n+{% block title %}E-mail de réinitialisation du mot de passe envoyé{% endblock %}\n+\n+{% block body %}\n+    <p>\n+        Si un compte correspondant à votre adresse e-mail existe, un e-mail contenant un lien vous permettant de réinitialiser votre mot de passe vient de vous être envoyé.\n+Ce lien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.\n+    </p>\n+    <p>Si vous ne recevez pas d'e-mail, veuillez vérifier votre dossier spam ou <a href=\"{{ path('app_forgot_password_request') }}\">essayer à nouveau</a>.</p>\n+{% endblock %}\n"
+                }
+            ],
+            "date": 1747813525473,
+            "name": "Commit-0",
+            "content": "{% extends 'base.html.twig' %}\n\n{% block title %}Password Reset Email Sent{% endblock %}\n\n{% block body %}\n    <p>\n        Si un compte correspondant à votre adresse e-mail existe, un e-mail contenant un lien vous permettant de réinitialiser votre mot de passe vient de vous être envoyé.\nCe lien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.\n    </p>\n    <p>If you don't receive an email please check your spam folder or <a href=\"{{ path('app_forgot_password_request') }}\">try again</a>.</p>\n{% endblock %}\n"
+        }
+    ]
+}

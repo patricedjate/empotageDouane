@@ -9,6 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Validator\Constraints\File;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
@@ -107,6 +108,7 @@ class FicheType extends AbstractType
                     "class"=>"form-class"
                 ]
             ])
+            /*
             ->add('pdfFiles', FileType::class, [
                 'label' => 'Ajouter des fichiers PDF',
                 'mapped' => false, // on gère nous-mêmes l'upload
@@ -120,6 +122,15 @@ class FicheType extends AbstractType
                     ])
                 ],
             ])
+                */
+            ->add('fichiers', FileType::class, [
+            'label' => 'Fichiers PDF',
+            'multiple' => true,
+            'mapped' => false,
+            'required' => false,
+        ])
+        ->add('latitude', HiddenType::class)
+        ->add('longitude', HiddenType::class)
             ->add('Submit',SubmitType::class,[
                 "attr"=>[
                     "class"=>"btn btn-success mt-3 mb-3",

@@ -15,6 +15,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 #[Route('/agent')]
 class AgentController extends AbstractController
@@ -72,7 +74,7 @@ class AgentController extends AbstractController
     #[isGranted('ROLE_AGENT')]
     #[Security("is_granted('ROLE_AGENT')")]
     #[Route('/RapportEmpotage/edit/{id}', name:'edit_RapportEmpotage')]
-    public function edit(Request $request, RapportEmpotage $Rapport, EntityManagerInterface $manager, FicheRepository $repository): Response
+    public function edit(Request $request,SluggerInterface $slugger, RapportEmpotage $Rapport, EntityManagerInterface $manager, FicheRepository $repository): Response
     {
         if(!$this->getUser()){
             return $this->redirectToRoute('app_login');
@@ -81,7 +83,29 @@ class AgentController extends AbstractController
         $form = $this->createForm(RapportEmpotageType::class, $Rapport);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
+             $imageFiles = $form->get('images')->getData();
+        $imageNames = [];
+
+        if ($imageFiles) {
+            foreach ($imageFiles as $image) {
+                $originalFilename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$image->guessExtension();
+
+                try {
+                    $image->move(
+                        $this->getParameter('uploads_directory'), // définis dans services.yaml
+                        $newFilename
+                    );
+                    $imageNames[] = $newFilename;
+                } catch (FileException $e) {
+                    // Gère l'erreur
+                }
+            }
+        }
+            
             $rapport = $form->getData();
+            $rapport->setImages($imageNames);
             $fiche->setStatut(true);
             $rapport->setDate(new \DateTimeImmutable);
             $manager->persist($rapport);

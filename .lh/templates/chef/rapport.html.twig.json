@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 8,
+            "activePatchIndex": 22,
             "patches": [
                 {
                     "date": 1677701933644,
@@ -40,6 +40,62 @@
                 {
                     "date": 1677737723308,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,8 @@\n     <div class=\"row\">\r\n     <h1>Details du rapport</h1>\r\n         <div class=\"col-md-12 alert alert-info\">\r\n          {% for rap in rapport %}\r\n-\r\n                 {{rap.contenu}}\r\n          {% endfor %}\r\n         </div>\r\n     </div>\r\n"
+                },
+                {
+                    "date": 1749488014702,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,8 +6,11 @@\n         <div class=\"col-md-12 alert alert-info\">\r\n          {% for rap in rapport %}\r\n                 {{rap.contenu}}\r\n          {% endfor %}\r\n+         {% for image in produit.images %}\r\n+    <img src=\"{{ asset('uploads/' ~ image) }}\" width=\"100\" />\r\n+{% endfor %}\r\n         </div>\r\n     </div>\r\n     </div>\r\n {% endblock %}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749488073877,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,16 @@\n+{% extends 'chefdashboardbase.html.twig' %}\r\n+{% block body %}\r\n+    <div class=\"container\">\r\n+    <div class=\"row\">\r\n+    <h1>Details du rapport</h1>\r\n+        <div class=\"col-md-12 alert alert-info\">\r\n+         {% for rap in rapport %}\r\n+                {{rap.contenu}}\r\n+         {% endfor %}\r\n+         {% for image in rapport.images %}\r\n+    <img src=\"{{ asset('uploads/' ~ image) }}\" width=\"100\" />\r\n+{% endfor %}\r\n+        </div>\r\n+    </div>\r\n+    </div>\r\n+{% endblock %}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749488984493,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,21 +12,5 @@\n {% endfor %}\r\n         </div>\r\n     </div>\r\n     </div>\r\n-{% endblock %}\n-{% extends 'chefdashboardbase.html.twig' %}\r\n-{% block body %}\r\n-    <div class=\"container\">\r\n-    <div class=\"row\">\r\n-    <h1>Details du rapport</h1>\r\n-        <div class=\"col-md-12 alert alert-info\">\r\n-         {% for rap in rapport %}\r\n-                {{rap.contenu}}\r\n-         {% endfor %}\r\n-         {% for image in produit.images %}\r\n-    <img src=\"{{ asset('uploads/' ~ image) }}\" width=\"100\" />\r\n-{% endfor %}\r\n-        </div>\r\n-    </div>\r\n-    </div>\r\n {% endblock %}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749489026912,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,12 +5,13 @@\n     <h1>Details du rapport</h1>\r\n         <div class=\"col-md-12 alert alert-info\">\r\n          {% for rap in rapport %}\r\n                 {{rap.contenu}}\r\n-         {% endfor %}\r\n-         {% for image in rapport.images %}\r\n+                  {% for image in rapport.images %}\r\n     <img src=\"{{ asset('uploads/' ~ image) }}\" width=\"100\" />\r\n {% endfor %}\r\n+         {% endfor %}\r\n+       \r\n         </div>\r\n     </div>\r\n     </div>\r\n {% endblock %}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749489039463,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,13 +5,12 @@\n     <h1>Details du rapport</h1>\r\n         <div class=\"col-md-12 alert alert-info\">\r\n          {% for rap in rapport %}\r\n                 {{rap.contenu}}\r\n-                  {% for image in rapport.images %}\r\n+         {% endfor %}\r\n+         {% for image in rapport.images %}\r\n     <img src=\"{{ asset('uploads/' ~ image) }}\" width=\"100\" />\r\n {% endfor %}\r\n-         {% endfor %}\r\n-       \r\n         </div>\r\n     </div>\r\n     </div>\r\n {% endblock %}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749489220396,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,11 +6,21 @@\n         <div class=\"col-md-12 alert alert-info\">\r\n          {% for rap in rapport %}\r\n                 {{rap.contenu}}\r\n          {% endfor %}\r\n-         {% for image in rapport.images %}\r\n-    <img src=\"{{ asset('uploads/' ~ image) }}\" width=\"100\" />\r\n-{% endfor %}\r\n+    <h2>Galerie d'images</h2>\r\n+\r\n+{% if rapport.images is not empty %}\r\n+    <div class=\"galerie\">\r\n+        {% for image in rapport.images %}\r\n+            <div class=\"image-wrapper\">\r\n+                <img src=\"{{ asset('uploads/' ~ image) }}\" alt=\"Image du produit\" width=\"150\">\r\n+            </div>\r\n+        {% endfor %}\r\n+    </div>\r\n+{% else %}\r\n+    <p>Aucune image disponible.</p>\r\n+{% endif %}\r\n         </div>\r\n     </div>\r\n     </div>\r\n {% endblock %}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749490578500,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,22 +5,11 @@\n     <h1>Details du rapport</h1>\r\n         <div class=\"col-md-12 alert alert-info\">\r\n          {% for rap in rapport %}\r\n                 {{rap.contenu}}\r\n+                \r\n          {% endfor %}\r\n-    <h2>Galerie d'images</h2>\r\n \r\n-{% if rapport.images is not empty %}\r\n-    <div class=\"galerie\">\r\n-        {% for image in rapport.images %}\r\n-            <div class=\"image-wrapper\">\r\n-                <img src=\"{{ asset('uploads/' ~ image) }}\" alt=\"Image du produit\" width=\"150\">\r\n-            </div>\r\n-        {% endfor %}\r\n-    </div>\r\n-{% else %}\r\n-    <p>Aucune image disponible.</p>\r\n-{% endif %}\r\n         </div>\r\n     </div>\r\n     </div>\r\n {% endblock %}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749490593295,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,16 @@\n+{% extends 'chefdashboardbase.html.twig' %}\r\n+{% block body %}\r\n+    <div class=\"container\">\r\n+    <div class=\"row\">\r\n+    <h1>Details du rapport</h1>\r\n+        <div class=\"col-md-12 alert alert-info\">\r\n+         {% for rap in rapport %}\r\n+                {{rap.contenu}}\r\n+                {{dump(rap)}}\r\n+         {% endfor %}\r\n+\r\n+        </div>\r\n+    </div>\r\n+    </div>\r\n+    </div>\r\n+{% endblock %}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749490657243,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,5 +12,18 @@\n         </div>\r\n     </div>\r\n     </div>\r\n     </div>\r\n+        <h2>Galerie d'images</h2>\r\n+\r\n+{% if rap.images is not empty %}\r\n+    <div class=\"galerie\">\r\n+        {% for image in rap.images %}\r\n+            <div class=\"image-wrapper\">\r\n+                <img src=\"{{ asset('uploads/' ~ image) }}\" alt=\"Image du produit\" width=\"150\">\r\n+            </div>\r\n+        {% endfor %}\r\n+    </div>\r\n+{% else %}\r\n+    <p>Aucune image disponible.</p>\r\n+{% endif %}\r\n {% endblock %}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749490680580,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,17 +6,9 @@\n         <div class=\"col-md-12 alert alert-info\">\r\n          {% for rap in rapport %}\r\n                 {{rap.contenu}}\r\n                 {{dump(rap)}}\r\n-         {% endfor %}\r\n-\r\n-        </div>\r\n-    </div>\r\n-    </div>\r\n-    </div>\r\n-        <h2>Galerie d'images</h2>\r\n-\r\n-{% if rap.images is not empty %}\r\n+                {% if rap.images is not empty %}\r\n     <div class=\"galerie\">\r\n         {% for image in rap.images %}\r\n             <div class=\"image-wrapper\">\r\n                 <img src=\"{{ asset('uploads/' ~ image) }}\" alt=\"Image du produit\" width=\"150\">\r\n@@ -25,20 +17,14 @@\n     </div>\r\n {% else %}\r\n     <p>Aucune image disponible.</p>\r\n {% endif %}\r\n-{% endblock %}\n-{% extends 'chefdashboardbase.html.twig' %}\r\n-{% block body %}\r\n-    <div class=\"container\">\r\n-    <div class=\"row\">\r\n-    <h1>Details du rapport</h1>\r\n-        <div class=\"col-md-12 alert alert-info\">\r\n-         {% for rap in rapport %}\r\n-                {{rap.contenu}}\r\n-                \r\n          {% endfor %}\r\n \r\n         </div>\r\n     </div>\r\n     </div>\r\n+    </div>\r\n+        <h2>Galerie d'images</h2>\r\n+\r\n+\r\n {% endblock %}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749490723853,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,17 @@\n         <div class=\"col-md-12 alert alert-info\">\r\n          {% for rap in rapport %}\r\n                 {{rap.contenu}}\r\n                 {{dump(rap)}}\r\n-                {% if rap.images is not empty %}\r\n+                \r\n+        \r\n+\r\n+        </div>\r\n+    </div>\r\n+    </div>\r\n+    </div>\r\n+        <h2>Galerie d'images</h2>\r\n+{% if rap.images is not empty %}\r\n     <div class=\"galerie\">\r\n         {% for image in rap.images %}\r\n             <div class=\"image-wrapper\">\r\n                 <img src=\"{{ asset('uploads/' ~ image) }}\" alt=\"Image du produit\" width=\"150\">\r\n@@ -17,14 +25,6 @@\n     </div>\r\n {% else %}\r\n     <p>Aucune image disponible.</p>\r\n {% endif %}\r\n-         {% endfor %}\r\n-\r\n-        </div>\r\n-    </div>\r\n-    </div>\r\n-    </div>\r\n-        <h2>Galerie d'images</h2>\r\n-\r\n-\r\n+ {% endfor %}\r\n {% endblock %}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749490771912,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n {% if rap.images is not empty %}\r\n     <div class=\"galerie\">\r\n         {% for image in rap.images %}\r\n             <div class=\"image-wrapper\">\r\n-                <img src=\"{{ asset('uploads/' ~ image) }}\" alt=\"Image du produit\" width=\"150\">\r\n+                <img src=\"{{ asset('uploads/' ~ image) }}\" alt=\"Image du produit\" width=\"100\">\r\n             </div>\r\n         {% endfor %}\r\n     </div>\r\n {% else %}\r\n"
+                },
+                {
+                    "date": 1749490828978,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,30 @@\n+{% extends 'chefdashboardbase.html.twig' %}\r\n+{% block body %}\r\n+    <div class=\"container\">\r\n+    <div class=\"row\">\r\n+    <h1>Details du rapport</h1>\r\n+        <div class=\"col-md-12 alert alert-info\">\r\n+         {% for rap in rapport %}\r\n+                {{rap.contenu}}\r\n+                {{dump(rap)}}\r\n+                \r\n+        \r\n+\r\n+        </div>\r\n+    </div>\r\n+    </div>\r\n+    </div>\r\n+        <h2>Galerie d'images</h2>\r\n+{% if rap.images is not empty %}\r\n+    <div class=\"galerie\">\r\n+        {% for image in rap.images %}\r\n+            <div class=\"image-wrapper\">\r\n+                <img src=\"{{ asset('uploads/images/' ~ image) }}\" alt=\"Image du produit\" width=\"100\">\r\n+            </div>\r\n+        {% endfor %}\r\n+    </div>\r\n+{% else %}\r\n+    <p>Aucune image disponible.</p>\r\n+{% endif %}\r\n+ {% endfor %}\r\n+{% endblock %}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1749491416621,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,6 @@\n {% extends 'chefdashboardbase.html.twig' %}\r\n+\r\n {% block body %}\r\n     <div class=\"container\">\r\n     <div class=\"row\">\r\n     <h1>Details du rapport</h1>\r\n@@ -26,35 +27,5 @@\n {% else %}\r\n     <p>Aucune image disponible.</p>\r\n {% endif %}\r\n  {% endfor %}\r\n-{% endblock %}\n-{% extends 'chefdashboardbase.html.twig' %}\r\n-{% block body %}\r\n-    <div class=\"container\">\r\n-    <div class=\"row\">\r\n-    <h1>Details du rapport</h1>\r\n-        <div class=\"col-md-12 alert alert-info\">\r\n-         {% for rap in rapport %}\r\n-                {{rap.contenu}}\r\n-                {{dump(rap)}}\r\n-                \r\n-        \r\n-\r\n-        </div>\r\n-    </div>\r\n-    </div>\r\n-    </div>\r\n-        <h2>Galerie d'images</h2>\r\n-{% if rap.images is not empty %}\r\n-    <div class=\"galerie\">\r\n-        {% for image in rap.images %}\r\n-            <div class=\"image-wrapper\">\r\n-                <img src=\"{{ asset('uploads/' ~ image) }}\" alt=\"Image du produit\" width=\"100\">\r\n-            </div>\r\n-        {% endfor %}\r\n-    </div>\r\n-{% else %}\r\n-    <p>Aucune image disponible.</p>\r\n-{% endif %}\r\n- {% endfor %}\r\n {% endblock %}\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1677701933644,

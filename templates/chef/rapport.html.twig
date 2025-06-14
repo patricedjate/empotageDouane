@@ -1,4 +1,5 @@
 {% extends 'chefdashboardbase.html.twig' %}
+
 {% block body %}
     <div class="container">
     <div class="row">
@@ -6,8 +7,25 @@
         <div class="col-md-12 alert alert-info">
          {% for rap in rapport %}
                 {{rap.contenu}}
-         {% endfor %}
+                {{dump(rap)}}
+                
+        
+
         </div>
     </div>
     </div>
+    </div>
+        <h2>Galerie d'images</h2>
+{% if rap.images is not empty %}
+    <div class="galerie">
+        {% for image in rap.images %}
+            <div class="image-wrapper">
+                <img src="{{ asset('uploads/images/' ~ image) }}" alt="Image du produit" width="100">
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>Aucune image disponible.</p>
+{% endif %}
+ {% endfor %}
 {% endblock %}

@@ -1,0 +1,66 @@
+{
+    "sourceFile": "templates/reset_password/reset.html.twig",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 12,
+            "patches": [
+                {
+                    "date": 1747812811452,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1747812824052,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,10 +1,10 @@\n {% extends 'base.html.twig' %}\n \n-{% block title %}Reset your password{% endblock %}\n+{% block title %}Réinitialisez votre mot de passe{% endblock %}\n \n {% block body %}\n-    <h1></h1>\n+    <h1>Réinitialisez votre mot de passe</h1>\n \n     {{ form_start(resetForm) }}\n         {{ form_row(resetForm.plainPassword) }}\n         <button class=\"btn btn-primary\">Réinitialiser le mot de passe</button>\n"
+                },
+                {
+                    "date": 1747814575458,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,10 +3,11 @@\n {% block title %}Réinitialisez votre mot de passe{% endblock %}\n \n {% block body %}\n     <h1>Réinitialisez votre mot de passe</h1>\n-\n+<div class=\"d-flex justify-content-center align-items-center\">\n     {{ form_start(resetForm) }}\n         {{ form_row(resetForm.plainPassword) }}\n         <button class=\"btn btn-primary\">Réinitialiser le mot de passe</button>\n     {{ form_end(resetForm) }}\n+</div>\n {% endblock %}\n"
+                },
+                {
+                    "date": 1747814605133,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n \n {% block title %}Réinitialisez votre mot de passe{% endblock %}\n \n {% block body %}\n-    <h1>Réinitialisez votre mot de passe</h1>\n+    <h1 class=\"text-align\">Réinitialisez votre mot de passe</h1>\n <div class=\"d-flex justify-content-center align-items-center\">\n     {{ form_start(resetForm) }}\n         {{ form_row(resetForm.plainPassword) }}\n         <button class=\"btn btn-primary\">Réinitialiser le mot de passe</button>\n"
+                },
+                {
+                    "date": 1747814640526,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n \n {% block title %}Réinitialisez votre mot de passe{% endblock %}\n \n {% block body %}\n-    <h1 class=\"text-align\">Réinitialisez votre mot de passe</h1>\n+    <h1 class=\"align-center\">Réinitialisez votre mot de passe</h1>\n <div class=\"d-flex justify-content-center align-items-center\">\n     {{ form_start(resetForm) }}\n         {{ form_row(resetForm.plainPassword) }}\n         <button class=\"btn btn-primary\">Réinitialiser le mot de passe</button>\n"
+                },
+                {
+                    "date": 1747814659723,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,10 +2,11 @@\n \n {% block title %}Réinitialisez votre mot de passe{% endblock %}\n \n {% block body %}\n-    <h1 class=\"align-center\">Réinitialisez votre mot de passe</h1>\n+   \n <div class=\"d-flex justify-content-center align-items-center\">\n+ <h1 class=\"align-center\">Réinitialisez votre mot de passe</h1>\n     {{ form_start(resetForm) }}\n         {{ form_row(resetForm.plainPassword) }}\n         <button class=\"btn btn-primary\">Réinitialiser le mot de passe</button>\n     {{ form_end(resetForm) }}\n"
+                },
+                {
+                    "date": 1747814669724,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n \n {% block body %}\n    \n <div class=\"d-flex justify-content-center align-items-center\">\n- <h1 class=\"align-center\">Réinitialisez votre mot de passe</h1>\n+ <h1>Réinitialisez votre mot de passe</h1>\n     {{ form_start(resetForm) }}\n         {{ form_row(resetForm.plainPassword) }}\n         <button class=\"btn btn-primary\">Réinitialiser le mot de passe</button>\n     {{ form_end(resetForm) }}\n"
+                },
+                {
+                    "date": 1747814687178,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,11 +2,11 @@\n \n {% block title %}Réinitialisez votre mot de passe{% endblock %}\n \n {% block body %}\n-   \n+   <h1>Réinitialisez votre mot de passe</h1>\n <div class=\"d-flex justify-content-center align-items-center\">\n- <h1>Réinitialisez votre mot de passe</h1>\n+ \n     {{ form_start(resetForm) }}\n         {{ form_row(resetForm.plainPassword) }}\n         <button class=\"btn btn-primary\">Réinitialiser le mot de passe</button>\n     {{ form_end(resetForm) }}\n"
+                },
+                {
+                    "date": 1747814746529,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,14 @@\n+{% extends 'base.html.twig' %}\n+\n+{% block title %}Réinitialisez votre mot de passe{% endblock %}\n+\n+{% block body %}\n+   <h1>Réinitialisez votre mot de passe</h1>\n+<div class=\"d-flex justify-content-center align-items-center\">\n+ \n+    {{ form_start(resetForm) }}\n+        {{ form_row(resetForm.plainPassword) }}\n+        <button class=\"btn btn-primary mt-5\">Réinitialiser le mot de passe</button>\n+    {{ form_end(resetForm) }}\n+</div>\n+{% endblock %}\n"
+                },
+                {
+                    "date": 1747814770433,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,8 +7,8 @@\n <div class=\"d-flex justify-content-center align-items-center\">\n  \n     {{ form_start(resetForm) }}\n         {{ form_row(resetForm.plainPassword) }}\n-        <button class=\"btn btn-primary mt-5\">Réinitialiser le mot de passe</button>\n+        <button class=\"btn btn-primary mt-2 mb-2\">Réinitialiser le mot de passe</button>\n     {{ form_end(resetForm) }}\n </div>\n {% endblock %}\n"
+                },
+                {
+                    "date": 1747814870451,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,14 @@\n+{% extends 'base.html.twig' %}\n+\n+{% block title %}Réinitialisez votre mot de passe{% endblock %}\n+\n+{% block body %}\n+   <h1>Réinitialisez votre mot de passe</h1>\n+<div class=\"d-flex justify-content-center align-items-center\">\n+ \n+    {{ form_start(resetForm) }}\n+        {{ form_row(resetForm.plainPassword) }}\n+        <button class=\"btn btn-primary text-center\">Réinitialiser le mot de passe</button>\n+    {{ form_end(resetForm) }}\n+</div>\n+{% endblock %}\n"
+                },
+                {
+                    "date": 1747814895937,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,13 +2,13 @@\n \n {% block title %}Réinitialisez votre mot de passe{% endblock %}\n \n {% block body %}\n-   <h1>Réinitialisez votre mot de passe</h1>\n+   <h1 class=\"text-center\">Réinitialisez votre mot de passe</h1>\n <div class=\"d-flex justify-content-center align-items-center\">\n  \n     {{ form_start(resetForm) }}\n         {{ form_row(resetForm.plainPassword) }}\n-        <button class=\"btn btn-primary text-center\">Réinitialiser le mot de passe</button>\n+        <button class=\"btn btn-primary mt-2 mb-2\">Réinitialiser le mot de passe</button>\n     {{ form_end(resetForm) }}\n </div>\n {% endblock %}\n"
+                },
+                {
+                    "date": 1747814915986,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,14 @@\n+{% extends 'base.html.twig' %}\n+\n+{% block title %}Réinitialisez votre mot de passe{% endblock %}\n+\n+{% block body %}\n+   <h1 class=\"text-center mb-5\">Réinitialisez votre mot de passe</h1>\n+<div class=\"d-flex justify-content-center align-items-center\">\n+ \n+    {{ form_start(resetForm) }}\n+        {{ form_row(resetForm.plainPassword) }}\n+        <button class=\"btn btn-primary mt-2 mb-2\">Réinitialiser le mot de passe</button>\n+    {{ form_end(resetForm) }}\n+</div>\n+{% endblock %}\n"
+                }
+            ],
+            "date": 1747812811452,
+            "name": "Commit-0",
+            "content": "{% extends 'base.html.twig' %}\n\n{% block title %}Reset your password{% endblock %}\n\n{% block body %}\n    <h1></h1>\n\n    {{ form_start(resetForm) }}\n        {{ form_row(resetForm.plainPassword) }}\n        <button class=\"btn btn-primary\">Réinitialiser le mot de passe</button>\n    {{ form_end(resetForm) }}\n{% endblock %}\n"
+        }
+    ]
+}

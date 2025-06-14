@@ -3,11 +3,23 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 3,
             "patches": [
                 {
                     "date": 1674457721899,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1749487636726,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,13 +12,22 @@\n     #[ORM\\GeneratedValue]\n     #[ORM\\Column]\n     private ?int $id = null;\n \n-    #[ORM\\Column(length: 255)]\n+ #[ORM\\Column(type: 'json')]\n+    private array $images = [];\n+    \n+    #[ORM\\Column(length: 255, nullable: true)]\n     private ?string $contenu = null;\n \n     #[ORM\\Column]\n     private ?\\DateTimeImmutable $date = null;\n+\n+    #[ORM\\ManyToOne(inversedBy: 'rapportEmpotages')]\n+    private ?user $user = null;\n+\n+    #[ORM\\OneToOne(cascade: ['persist', 'remove'])]\n+    private ?Fiche $fiche = null;\n     public function __construct()\n     {\n         $this->date = new \\DateTimeImmutable();\n     }\n@@ -49,5 +58,31 @@\n         $this->date = $date;\n \n         return $this;\n     }\n+\n+    public function getUser(): ?user\n+    {\n+        return $this->user;\n+    }\n+\n+    public function setUser(?user $user): self\n+    {\n+        $this->user = $user;\n+\n+        return $this;\n+    }\n+\n+    public function getFiche(): ?Fiche\n+    {\n+        return $this->fiche;\n+    }\n+\n+    public function setFiche(?Fiche $fiche): self\n+    {\n+        $this->fiche = $fiche;\n+\n+        return $this;\n+    }\n+\n+\n }\n"
+                },
+                {
+                    "date": 1749487662157,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n     private ?int $id = null;\n \n  #[ORM\\Column(type: 'json')]\n     private array $images = [];\n-    \n+\n     #[ORM\\Column(length: 255, nullable: true)]\n     private ?string $contenu = null;\n \n     #[ORM\\Column]\n@@ -82,7 +82,16 @@\n         $this->fiche = $fiche;\n \n         return $this;\n     }\n+ public function getImages(): array\n+    {\n+        return $this->images;\n+    }\n \n+    public function setImages(array $images): self\n+    {\n+        $this->images = $images;\n+        return $this;\n+    }\n \n }\n"
+                },
+                {
+                    "date": 1749488185336,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n     #[ORM\\GeneratedValue]\n     #[ORM\\Column]\n     private ?int $id = null;\n \n- #[ORM\\Column(type: 'json')]\n+ #[ORM\\Column(type: 'json', nullable: true)]\n     private array $images = [];\n \n     #[ORM\\Column(length: 255, nullable: true)]\n     private ?string $contenu = null;\n"
                 }
             ],
             "date": 1674457721899,

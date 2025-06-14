@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 4,
+            "activePatchIndex": 6,
             "patches": [
                 {
                     "date": 1674817395052,
@@ -24,6 +24,14 @@
                 {
                     "date": 1675335481004,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,10 +5,10 @@\n use App\\Entity\\RapportEmpotage;\n use Symfony\\Component\\Form\\AbstractType;\n use Symfony\\Component\\Form\\FormBuilderInterface;\n use Symfony\\Component\\OptionsResolver\\OptionsResolver;\n-use Symfony\\Component\\Form\\Extension\\Core\\Type\\TextType;\n use Symfony\\Component\\Form\\Extension\\Core\\Type\\SubmitType;\n+use Symfony\\Component\\Form\\Extension\\Core\\Type\\TextareaType;\n \n class RapportEmpotageType extends AbstractType\n {\n     public function buildForm(FormBuilderInterface $builder, array $options): void\n"
+                },
+                {
+                    "date": 1749487690756,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,47 @@\n+<?php\n+\n+namespace App\\Form;\n+\n+use App\\Entity\\RapportEmpotage;\n+use Symfony\\Component\\Form\\AbstractType;\n+use Symfony\\Component\\Form\\FormBuilderInterface;\n+use Symfony\\Component\\OptionsResolver\\OptionsResolver;\n+use Symfony\\Component\\Form\\Extension\\Core\\Type\\SubmitType;\n+use Symfony\\Component\\Form\\Extension\\Core\\Type\\TextareaType;\n+\n+class RapportEmpotageType extends AbstractType\n+{\n+    public function buildForm(FormBuilderInterface $builder, array $options): void\n+    {\n+        $builder\n+            ->add('contenu',TextareaType::class,[\n+                \"attr\"=>[\n+                    \"class\"=>\"form-control\"\n+                ],\n+                \"label\"=>\"Rediger le rapport d'empotage\"\n+                \n+            ])\n+            ->add('Submit',SubmitType::class,[\n+                \"attr\"=>[\n+                    \"class\"=>\"btn btn-success mt-3 mb-3 no-print\",\n+                    \"onClick\"=>\"window.print()\",\n+                ],\n+                \"label\"=>\"Envoyer\",\n+                \n+            ]),\n+            ->add('images', FileType::class, [\n+                'label' => 'Images',\n+                'multiple' => true,\n+                'mapped' => false,\n+                'required' => false,\n+            ]);\n+        ;\n+    }\n+\n+    public function configureOptions(OptionsResolver $resolver): void\n+    {\n+        $resolver->setDefaults([\n+            'data_class' => RapportEmpotage::class,\n+        ]);\n+    }\n+}\n"
+                },
+                {
+                    "date": 1749487707887,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,48 @@\n+<?php\n+\n+namespace App\\Form;\n+\n+use App\\Entity\\RapportEmpotage;\n+use Symfony\\Component\\Form\\AbstractType;\n+use Symfony\\Component\\Form\\FormBuilderInterface;\n+use Symfony\\Component\\OptionsResolver\\OptionsResolver;\n+use Symfony\\Component\\Form\\Extension\\Core\\Type\\FileType;\n+use Symfony\\Component\\Form\\Extension\\Core\\Type\\SubmitType;\n+use Symfony\\Component\\Form\\Extension\\Core\\Type\\TextareaType;\n+\n+class RapportEmpotageType extends AbstractType\n+{\n+    public function buildForm(FormBuilderInterface $builder, array $options): void\n+    {\n+        $builder\n+            ->add('contenu',TextareaType::class,[\n+                \"attr\"=>[\n+                    \"class\"=>\"form-control\"\n+                ],\n+                \"label\"=>\"Rediger le rapport d'empotage\"\n+                \n+            ])\n+            ->add('Submit',SubmitType::class,[\n+                \"attr\"=>[\n+                    \"class\"=>\"btn btn-success mt-3 mb-3 no-print\",\n+                    \"onClick\"=>\"window.print()\",\n+                ],\n+                \"label\"=>\"Envoyer\",\n+                \n+            ])\n+            ->add('images', FileType::class, [\n+                'label' => 'Images',\n+                'multiple' => true,\n+                'mapped' => false,\n+                'required' => false,\n+            ]);\n+        ;\n+    }\n+\n+    public function configureOptions(OptionsResolver $resolver): void\n+    {\n+        $resolver->setDefaults([\n+            'data_class' => RapportEmpotage::class,\n+        ]);\n+    }\n+}\n"
                 }
             ],
             "date": 1674817395052,

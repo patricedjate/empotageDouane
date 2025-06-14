@@ -21,6 +21,11 @@ class UserAuthenticator extends AbstractLoginFormAuthenticator
     use TargetPathTrait;
 
     public const LOGIN_ROUTE = 'app_login';
+    public const LOGIN_CHEF = 'chef_Index';
+    public const LOGIN_AGENT = 'agentIndex';
+    public const LOGIN_CDA = 'demandeEmpotage';
+    public const LOGIN_ADMIN ='admin.index';
+    
 
     public function __construct(private UrlGeneratorInterface $urlGenerator)
     {
@@ -46,8 +51,21 @@ class UserAuthenticator extends AbstractLoginFormAuthenticator
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
             return new RedirectResponse($targetPath);
         }
+        $user = $token->getUser();
+        if(in_array("ROLE_CHEF", $user->getRoles())) {
+            return new RedirectResponse($this->urlGenerator->generate(self::LOGIN_CHEF));
+        }
+        elseif(in_array("ROLE_AGENT", $user->getRoles())) {
+            return new RedirectResponse($this->urlGenerator->generate(self::LOGIN_AGENT));
+        }
 
-         return new RedirectResponse($this->urlGenerator->generate('chef_Index'));
+        elseif(in_array("ROLE_CDA", $user->getRoles())) {
+            return new RedirectResponse($this->urlGenerator->generate(self::LOGIN_CDA));
+        }
+        
+        elseif(in_array("ROLE_ADMIN", $user->getRoles())) {
+            return new RedirectResponse($this->urlGenerator->generate(self::LOGIN_ADMIN));
+        }
          
     }
 

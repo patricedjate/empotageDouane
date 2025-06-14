@@ -125,9 +125,14 @@
 									</p>
 								</div>
 							</div>
-<div class="container mt-5">
-		<p class="fs-2">Pièce joint</p>
-		<img src="{{ vich_uploader_asset(fiche, 'imageFile') }}" width="1200px" height="700px">
-	</div>
+
+{% for fichier in fiche.fichiers %}
+    <div style="margin-bottom: 1em;">
+        <p><strong>{{ fichier }}</strong></p>
+        <iframe src="{{ asset('uploads/pdfs/' ~ fichier) }}"
+                width="100%" height="500px" style="border: 1px solid #ccc;"></iframe>
+        <a href="{{ asset('uploads/pdfs/' ~ fichier) }}" target="_blank">Ouvrir dans un nouvel onglet</a>
+    </div>
+{% endfor %}
 
 						{% endblock %}
