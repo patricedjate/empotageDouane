@@ -7,7 +7,9 @@ use App\Entity\RapportEmpotage;
 use doctrine;
 use App\Entity\User;
 use App\Entity\Fiche;
+use App\Service\PdfService;
 use App\Form\FicheType;
+use App\Repository\FicheRepository;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mime\Address;
@@ -17,6 +19,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 #[Route('/cda')]
 class DemandeEmpotageController extends AbstractController
 {
@@ -68,6 +72,14 @@ Douanes Ivoiriennes<br>
         $form = $this->createForm(FicheType::class, $fiche);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $fichiers = $form->get('fichiers')->getData();
+        $nomsFichiers = [];
+         foreach ($fichiers as $fichier) {
+            $nom = uniqid() . '.' . $fichier->guessExtension();
+            $fichier->move($this->getParameter('upload_directory'), $nom);
+            $nomsFichiers[] = $nom;
+        }
+         $fiche->setFichiers($nomsFichiers);
             $fiche = $form->getData();
             $fiche->setUser($agent);
             $fiche->setStatut(false);
@@ -77,6 +89,7 @@ Douanes Ivoiriennes<br>
             $manager->persist($fiche);
             $rapport->setFiche($fiche);
             $rapport->setUser($agent);
+            $rapport->setImages([""]);
             $manager->persist($rapport);
   $mailer->send($email);
             $manager->flush();
@@ -86,4 +99,32 @@ Douanes Ivoiriennes<br>
         'form' => $form->createView(),
     ]);
 }
+ #[Route('/ficheempotage', name: 'liste_fiche_cda')]
+    public function liste(FicheRepository $ficheRepository): Response
+    {
+        if(!$this->getUser()){
+            return $this->redirectToRoute('app_login');
+        }
+        $fiches = $ficheRepository->findAllFicheByCda($this->getUser());
+        return $this->render('demande_empotage/listefiche.html.twig', [
+            'fiches'=>$fiches
+        ]);
+    }
+     #[Route('/imprimer-formulaire/{id}', name: 'app_imprimer_formulaire')]
+    public function imprimerFormulaire(Fiche $fiche, PdfService $pdfService): Response
+    {
+        return $pdfService->generatePdf('/pdf.html.twig', [
+            'fiche' => $fiche,
+        ]);
+    }
+
+ #[isGranted('ROLE_CDA')]
+    #[Security("is_granted('ROLE_CDA')")]
+    #[Route('/{id}', name: 'cda_fiche_show')]
+    public function show(Fiche $fiche): Response
+    {
+        return $this->render('demande_empotage/fiche.html.twig', [
+            'fiche' => $fiche,
+        ]);
+    }
 }

@@ -13,6 +13,9 @@ class RapportEmpotage
     #[ORM\Column]
     private ?int $id = null;
 
+ #[ORM\Column(type: 'json', nullable: true)]
+    private array $images = [];
+
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $contenu = null;
 
@@ -80,6 +83,15 @@ class RapportEmpotage
 
         return $this;
     }
+ public function getImages(): array
+    {
+        return $this->images;
+    }
 
+    public function setImages(array $images): self
+    {
+        $this->images = $images;
+        return $this;
+    }
 
 }

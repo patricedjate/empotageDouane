@@ -1,6 +1,20 @@
 {% extends 'CDADashboardBase.html.twig' %}
 {% block title %}Formulaire demande d'empotage
 {% endblock %}
+{% block stylesheets %}
+{{ parent() }}
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+<style>
+ #map {
+        height: 400px; /* essentiel pour que la carte s'affiche */
+        width: 100%;
+        margin-bottom: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+    }
+	</style>
+{% endblock %}
 {% block body %}
 	
 			<div class="col">
@@ -76,17 +90,45 @@
 									<div class="col">
 										{{ form_row(form.nplombs) }}
 									</div>
-									<div class="col change-photo-btn mt-3">
-										<span>
-											<i class="fa fa-upload"></i>Upload BLC
-										</span>
-										{{form_row(form.imageFile)}}
+									<div class="col">
+										{{ form_row(form.fichiers) }}
 									</div>
+									
 								
-
+<div class="container">
+								<div id="map" style="height: 400px;"></div>
+    {{ form_widget(form.latitude) }}
+    {{ form_widget(form.longitude) }}
+							</div>
 
 							<div class="container">
 								{{ form_row(form.Submit) }}
 							</div>
 							{{ form_end(form) }}
 						{% endblock %}
+{% block script %}
+{{ parent() }}
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+<script>
+    const map = L.map('map').setView([5.3486, -4.0031], 13); // Abidjan par défaut
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    let marker;
+
+    map.on('click', function(e) {
+        const lat = e.latlng.lat;
+        const lng = e.latlng.lng;
+
+        if (marker) {
+            marker.setLatLng(e.latlng);
+        } else {
+            marker = L.marker(e.latlng).addTo(map);
+        }
+
+        document.getElementById('form_latitude').value = lat;
+        document.getElementById('form_longitude').value = lng;
+    });
+</script>
+{% endblock %}

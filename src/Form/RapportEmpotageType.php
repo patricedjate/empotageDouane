@@ -6,6 +6,7 @@ use App\Entity\RapportEmpotage;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
@@ -28,7 +29,13 @@ class RapportEmpotageType extends AbstractType
                 ],
                 "label"=>"Envoyer",
                 
-                ])
+            ])
+            ->add('images', FileType::class, [
+                'label' => 'Images',
+                'multiple' => true,
+                'mapped' => false,
+                'required' => false,
+            ]);
         ;
     }
 

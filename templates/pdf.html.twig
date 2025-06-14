@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Déclaration Douanière</title>
+    <style>
+        body {
+            font-family: DejaVu Sans, sans-serif;
+            font-size: 12px;
+            color: #000;
+        }
+        .header, .footer {
+            text-align: center;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .header-left, .header-right {
+            width: 30%;
+            font-size: 10px;
+            line-height: 1.4;
+        }
+        .header-center {
+            width: 40%;
+            text-align: center;
+        }
+        .logo {
+            width: 60px;
+            height: auto;
+            margin-bottom: 5px;
+        }
+
+        h2 {
+            font-size: 14px;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .field {
+            margin: 5px 0;
+        }
+
+        .label {
+            font-weight: normal;
+        }
+
+        .value {
+            font-weight: bold;
+            text-transform: lowercase;
+        }
+
+        .field-line {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .field-line .field {
+            width: 48%;
+        }
+
+        img.piece {
+            max-width: 200px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="header-left">
+            ministère du budget et du portefeuille de l'état<br>
+            ----------<br>
+            direction générale des douanes<br>
+            ----------<br>
+            direction des services douaniers du port et des services spéciaux<br>
+            sous direction des services douaniers du port<br>
+            ----------<br>
+            bureau export
+        </div>
+        <div class="header-center">
+            <img class="logo" src="{{ asset('images/logo-douanes.png') }}" alt="Logo Douanes">
+        </div>
+        <div class="header-right">
+            république de côte d’ivoire<br>
+            <strong>Union - Discipline - Travail</strong>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Informations personnels</h2>
+        <div class="field-line">
+            <div class="field"><span class="label">Nom CDA :</span> <span class="value">{{ fiche.nomCda }}</span></div>
+            <div class="field"><span class="label">Nom Exportateur :</span> <span class="value">{{ fiche.nomExportateur }}</span></div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Informations sur la marchandise</h2>
+        <div class="field-line">
+            <div class="field"><span class="label">Nature de la marchandise :</span> <span class="value">{{ fiche.natureMarchandise }}</span></div>
+            <div class="field"><span class="label">Colis marchandise :</span> <span class="value">{{ fiche.colisMarchandise }}</span></div>
+            <div class="field"><span class="label">Poids Net Marchandise :</span> <span class="value">{{ fiche.poidsNetMarchandise }}</span></div>
+            <div class="field"><span class="label">Conditionnement :</span> <span class="value">{{ fiche.conditionnementMarchandise }}</span></div>
+            <div class="field"><span class="label">Lieu Empotage :</span> <span class="value">{{ fiche.lieuEmpotageMarchandise }}</span></div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Informations sur le conteneur</h2>
+        <div class="field-line">
+            <div class="field"><span class="label">N° Conteneurs :</span> <span class="value">{{ fiche.nconteneurs }}</span></div>
+            <div class="field"><span class="label">Type Tc :</span> <span class="value">{{ fiche.typeTc }}</span></div>
+            <div class="field"><span class="label">N° Plombs :</span> <span class="value">{{ fiche.nplombs }}</span></div>
+        </div>
+    </div>
+
+    
+
+</body>
+</html>

@@ -1,6 +1,51 @@
 {% extends 'agentdashboardbase.html.twig' %}
 
 {% block title %}Liste des fiches de demande d'empotage{% endblock %}
+{% block stylesheets %}
+{{ parent() }}
+<style>
+.preview-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+.preview-container img {
+    width: 150px;
+    height: auto;
+    object-fit: cover;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+</style>
+{% endblock %}
 {% block body %}
 {{form(form)}}
+ <div id="preview" class="preview-container"></div>
+ {% endblock %}
+ {% block script %}
+{{ parent() }}
+ <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const input = document.querySelector('input[type="file"][multiple]');
+        const preview = document.getElementById('preview');
+
+        input.addEventListener('change', function () {
+            preview.innerHTML = ''; // Réinitialise
+            Array.from(this.files).forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    preview.appendChild(img);
+                }
+                reader.readAsDataURL(file);
+            });
+        });
+    });
+</script>
+
+
+
 {% endblock %}

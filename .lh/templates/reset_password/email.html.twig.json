@@ -1,0 +1,22 @@
+{
+    "sourceFile": "templates/reset_password/email.html.twig",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1747813076842,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1747813267313,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n         <p>Bonjour,</p>\n         <p>Vous avez récemment demandé à réinitialiser votre mot de passe sur la <strong>plateforme de gestion de la procédure d’empotage – Douanes Côte d’Ivoire</strong>.</p>\n         <p>Pour définir un nouveau mot de passe, veuillez cliquer sur le lien ci-dessous :</p>\n         <p style=\"text-align: center;\">\n-            <a href=\"{{ url('app_reset_password', {token: resetToken.token}) }}\">{{ url('app_reset_password', {token: resetToken.token}) }} style=\"background-color: #28a745; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;\">Réinitialiser mon mot de passe</a>\n+            <a href=\"{{ url('app_reset_password', {token: resetToken.token}) }}\" style=\"background-color: #28a745; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;\">{{ url('app_reset_password', {token: resetToken.token}) }} >Réinitialiser mon mot de passe</a>\n         </p>\n         <p><i>Ce lien est valable pendant <strong>{{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}</strong>. Passé ce délai, vous devrez renouveler votre demande.</i></p>\n         <p>Si vous n’êtes pas à l’origine de cette demande, veuillez ignorer cet email. Votre mot de passe actuel restera inchangé et votre compte reste sécurisé.</p>\n         <p>Pour toute assistance, vous pouvez contacter notre support technique à l’adresse : <a href=\"mailto:support@douanes-ci.gouv.ci\">support@douanes-ci.gouv.ci</a>.</p>\n"
+                }
+            ],
+            "date": 1747813076842,
+            "name": "Commit-0",
+            "content": "\n<body style=\"font-family: Arial, sans-serif; background-color: #f4f4f4; color: #333; padding: 20px;\">\n    <div style=\"background-color: #ffffff; padding: 20px; border-radius: 8px; max-width: 600px; margin: 0 auto;\">\n        <h2 style=\"color: #0056b3;\">Réinitialisation de votre mot de passe – Plateforme Empotage Douanes CI</h2>\n        <p>Bonjour,</p>\n        <p>Vous avez récemment demandé à réinitialiser votre mot de passe sur la <strong>plateforme de gestion de la procédure d’empotage – Douanes Côte d’Ivoire</strong>.</p>\n        <p>Pour définir un nouveau mot de passe, veuillez cliquer sur le lien ci-dessous :</p>\n        <p style=\"text-align: center;\">\n            <a href=\"{{ url('app_reset_password', {token: resetToken.token}) }}\">{{ url('app_reset_password', {token: resetToken.token}) }} style=\"background-color: #28a745; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;\">Réinitialiser mon mot de passe</a>\n        </p>\n        <p><i>Ce lien est valable pendant <strong>{{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}</strong>. Passé ce délai, vous devrez renouveler votre demande.</i></p>\n        <p>Si vous n’êtes pas à l’origine de cette demande, veuillez ignorer cet email. Votre mot de passe actuel restera inchangé et votre compte reste sécurisé.</p>\n        <p>Pour toute assistance, vous pouvez contacter notre support technique à l’adresse : <a href=\"mailto:support@douanes-ci.gouv.ci\">support@douanes-ci.gouv.ci</a>.</p>\n        <p>Merci pour votre confiance,</p>\n        <p style=\"font-weight: bold;\">L’équipe technique – Douanes Côte d’Ivoire</p>\n        \n    </div>\n</body>\n"
+        }
+    ]
+}

@@ -1,0 +1,30 @@
+{
+    "sourceFile": "config/services.yaml",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1749121152734,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1749488369289,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,9 @@\n # Put parameters here that don't need to change on each machine where the app is deployed\n # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration\n parameters:\n     upload_directory: '%kernel.project_dir%/public/uploads/pdfs'\n+    \n services:\n     # default configuration for services in *this* file\n     _defaults:\n         autowire: true      # Automatically injects dependencies in your services.\n"
+                },
+                {
+                    "date": 1749488400858,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,26 @@\n+# This file is the entry point to configure your own services.\n+# Files in the packages/ subdirectory configure your dependencies.\n+\n+# Put parameters here that don't need to change on each machine where the app is deployed\n+# https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration\n+parameters:\n+    upload_directory: '%kernel.project_dir%/public/uploads/pdfs'\n+    uploads_directory: '%kernel.project_dir%/public/uploads'\n+    \n+services:\n+    # default configuration for services in *this* file\n+    _defaults:\n+        autowire: true      # Automatically injects dependencies in your services.\n+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.\n+\n+    # makes classes in src/ available to be used as services\n+    # this creates a service per class whose id is the fully-qualified class name\n+    App\\:\n+        resource: '../src/'\n+        exclude:\n+            - '../src/DependencyInjection/'\n+            - '../src/Entity/'\n+            - '../src/Kernel.php'\n+\n+    # add more service definitions when explicit configuration is needed\n+    # please note that last definitions always *replace* previous ones\n"
+                },
+                {
+                    "date": 1749488415858,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,26 @@\n+# This file is the entry point to configure your own services.\n+# Files in the packages/ subdirectory configure your dependencies.\n+\n+# Put parameters here that don't need to change on each machine where the app is deployed\n+# https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration\n+parameters:\n+    upload_directory: '%kernel.project_dir%/public/uploads/pdfs'\n+    uploads_directory: '%kernel.project_dir%/public/uploads/images'\n+    \n+services:\n+    # default configuration for services in *this* file\n+    _defaults:\n+        autowire: true      # Automatically injects dependencies in your services.\n+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.\n+\n+    # makes classes in src/ available to be used as services\n+    # this creates a service per class whose id is the fully-qualified class name\n+    App\\:\n+        resource: '../src/'\n+        exclude:\n+            - '../src/DependencyInjection/'\n+            - '../src/Entity/'\n+            - '../src/Kernel.php'\n+\n+    # add more service definitions when explicit configuration is needed\n+    # please note that last definitions always *replace* previous ones\n"
+                }
+            ],
+            "date": 1749121152734,
+            "name": "Commit-0",
+            "content": "# This file is the entry point to configure your own services.\n# Files in the packages/ subdirectory configure your dependencies.\n\n# Put parameters here that don't need to change on each machine where the app is deployed\n# https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration\nparameters:\n    upload_directory: '%kernel.project_dir%/public/uploads/pdfs'\nservices:\n    # default configuration for services in *this* file\n    _defaults:\n        autowire: true      # Automatically injects dependencies in your services.\n        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.\n\n    # makes classes in src/ available to be used as services\n    # this creates a service per class whose id is the fully-qualified class name\n    App\\:\n        resource: '../src/'\n        exclude:\n            - '../src/DependencyInjection/'\n            - '../src/Entity/'\n            - '../src/Kernel.php'\n\n    # add more service definitions when explicit configuration is needed\n    # please note that last definitions always *replace* previous ones\n"
+        }
+    ]
+}

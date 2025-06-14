@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CdaController extends AbstractController
 {
-    #[Route('/cda', name: 'app_cda')]
+    #[Route('/cda/test', name: 'app_cda')]
     public function index(): Response
     {
         return $this->render('cda/index.html.twig', [

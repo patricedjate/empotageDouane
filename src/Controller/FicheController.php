@@ -29,6 +29,7 @@ class FicheController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $fiche->setCda($this->getUser());
             $ficheRepository->save($fiche, true);
 
             return $this->redirectToRoute('app_fiche_index', [], Response::HTTP_SEE_OTHER);

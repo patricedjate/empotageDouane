@@ -20,7 +20,11 @@ class ChangePasswordFormType extends AbstractType
                 'options' => [
                     'attr' => [
                         'autocomplete' => 'new-password',
+                        "class"=>"form-control floating"
                     ],
+                ],
+                "label_attr"=>[
+                    "class"=>"focus-label"
                 ],
                 'first_options' => [
                     'constraints' => [

@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/Form/Fiche1Type.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1749125612838,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1749125612838,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Form;\n\nuse App\\Entity\\Fiche;\nuse Symfony\\Component\\Form\\AbstractType;\nuse Symfony\\Component\\Form\\FormBuilderInterface;\nuse Vich\\UploaderBundle\\Form\\Type\\VichImageType;\nuse Symfony\\Component\\OptionsResolver\\OptionsResolver;\n\nclass Fiche1Type extends AbstractType\n{\n    public function buildForm(FormBuilderInterface $builder, array $options): void\n    {\n        $builder\n            ->add('nom_cda')\n            ->add('nom_exportateur')\n            ->add('nature_marchandise')\n            ->add('colis_marchandise')\n            ->add('poidsNet_marchandise')\n            ->add('conditionnement_marchandise')\n            ->add('lieuEmpotage_marchandise')\n            ->add('nconteneurs')\n            ->add('typeTC')\n            ->add('nplombs')\n            ->add('date')\n        ;\n    }\n\n    public function configureOptions(OptionsResolver $resolver): void\n    {\n        $resolver->setDefaults([\n            'data_class' => Fiche::class,\n        ]);\n    }\n}\n"
+        }
+    ]
+}

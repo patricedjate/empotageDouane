@@ -1,9 +1,18 @@
-<h1>Hi!</h1>
 
-<p>To reset your password, please visit the following link</p>
-
-<a href="{{ url('app_reset_password', {token: resetToken.token}) }}">{{ url('app_reset_password', {token: resetToken.token}) }}</a>
-
-<p>This link will expire in {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>
-
-<p>Cheers!</p>
+<body style="font-family: Arial, sans-serif; background-color: #f4f4f4; color: #333; padding: 20px;">
+    <div style="background-color: #ffffff; padding: 20px; border-radius: 8px; max-width: 600px; margin: 0 auto;">
+        <h2 style="color: #0056b3;">Réinitialisation de votre mot de passe – Plateforme Empotage Douanes CI</h2>
+        <p>Bonjour,</p>
+        <p>Vous avez récemment demandé à réinitialiser votre mot de passe sur la <strong>plateforme de gestion de la procédure d’empotage – Douanes Côte d’Ivoire</strong>.</p>
+        <p>Pour définir un nouveau mot de passe, veuillez cliquer sur le lien ci-dessous :</p>
+        <p style="text-align: center;">
+            <a href="{{ url('app_reset_password', {token: resetToken.token}) }}" style="background-color: #28a745; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">{{ url('app_reset_password', {token: resetToken.token}) }} >Réinitialiser mon mot de passe</a>
+        </p>
+        <p><i>Ce lien est valable pendant <strong>{{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}</strong>. Passé ce délai, vous devrez renouveler votre demande.</i></p>
+        <p>Si vous n’êtes pas à l’origine de cette demande, veuillez ignorer cet email. Votre mot de passe actuel restera inchangé et votre compte reste sécurisé.</p>
+        <p>Pour toute assistance, vous pouvez contacter notre support technique à l’adresse : <a href="mailto:support@douanes-ci.gouv.ci">support@douanes-ci.gouv.ci</a>.</p>
+        <p>Merci pour votre confiance,</p>
+        <p style="font-weight: bold;">L’équipe technique – Douanes Côte d’Ivoire</p>
+        
+    </div>
+</body>

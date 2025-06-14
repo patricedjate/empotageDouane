@@ -1,0 +1,46 @@
+{
+    "sourceFile": "templates/reset_password/request.html.twig",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 7,
+            "patches": [
+                {
+                    "date": 1747811851238,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1747811990943,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,22 @@\n+{% extends 'base.html.twig' %}\n+\n+{% block title %}Reset your password{% endblock %}\n+\n+{% block body %}\n+    {% for flash_error in app.flashes('reset_password_error') %}\n+        <div class=\"alert alert-danger\" role=\"alert\">{{ flash_error }}</div>\n+    {% endfor %}\n+    <h1>Reset your password</h1>\n+\n+    {{ form_start(requestForm) }}\n+        {{ form_row(requestForm.email) }}\n+        <div class=\"position-absolute top-50 start-50 translate-middle\">\n+            <small>\n+                Enter your email address and we will send you a\n+                link to reset your password.\n+            </small>\n+        </div>\n+\n+        <button class=\"btn btn-primary\">Send password reset email</button>\n+    {{ form_end(requestForm) }}\n+{% endblock %}\n"
+                },
+                {
+                    "date": 1747812041518,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,14 +9,16 @@\n     <h1>Reset your password</h1>\n \n     {{ form_start(requestForm) }}\n         {{ form_row(requestForm.email) }}\n+        <div class=\"position-absolute\">\n         <div class=\"position-absolute top-50 start-50 translate-middle\">\n             <small>\n                 Enter your email address and we will send you a\n                 link to reset your password.\n             </small>\n         </div>\n \n         <button class=\"btn btn-primary\">Send password reset email</button>\n+        </div>\n     {{ form_end(requestForm) }}\n {% endblock %}\n"
+                },
+                {
+                    "date": 1747812067668,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,38 +9,14 @@\n     <h1>Reset your password</h1>\n \n     {{ form_start(requestForm) }}\n         {{ form_row(requestForm.email) }}\n-        <div class=\"position-absolute\">\n-        <div class=\"position-absolute top-50 start-50 translate-middle\">\n+        <div>\n             <small>\n                 Enter your email address and we will send you a\n                 link to reset your password.\n             </small>\n         </div>\n \n         <button class=\"btn btn-primary\">Send password reset email</button>\n-        </div>\n     {{ form_end(requestForm) }}\n {% endblock %}\n-{% extends 'base.html.twig' %}\n-\n-{% block title %}Reset your password{% endblock %}\n-\n-{% block body %}\n-    {% for flash_error in app.flashes('reset_password_error') %}\n-        <div class=\"alert alert-danger\" role=\"alert\">{{ flash_error }}</div>\n-    {% endfor %}\n-    <h1>Reset your password</h1>\n-\n-    {{ form_start(requestForm) }}\n-        {{ form_row(requestForm.email) }}\n-        <div class=\"\">\n-            <small>\n-                Enter your email address and we will send you a\n-                link to reset your password.\n-            </small>\n-        </div>\n-\n-        <button class=\"btn btn-primary\">Send password reset email</button>\n-    {{ form_end(requestForm) }}\n-{% endblock %}\n"
+                },
+                {
+                    "date": 1747812732853,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,10 +11,9 @@\n     {{ form_start(requestForm) }}\n         {{ form_row(requestForm.email) }}\n         <div>\n             <small>\n-                Enter your email address and we will send you a\n-                link to reset your password.\n+               \n             </small>\n         </div>\n \n         <button class=\"btn btn-primary\">Send password reset email</button>\n"
+                },
+                {
+                    "date": 1747812748047,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,21 @@\n+{% extends 'base.html.twig' %}\n+\n+{% block title %}Reset your password{% endblock %}\n+\n+{% block body %}\n+    {% for flash_error in app.flashes('reset_password_error') %}\n+        <div class=\"alert alert-danger\" role=\"alert\">{{ flash_error }}</div>\n+    {% endfor %}\n+    <h1></h1>\n+\n+    {{ form_start(requestForm) }}\n+        {{ form_row(requestForm.email) }}\n+        <div>\n+            <small>\n+               Saisissez votre adresse e-mail et nous vous enverrons un lien pour réinitialiser votre mot de passe.\n+            </small>\n+        </div>\n+\n+        <button class=\"btn btn-primary\">Send password reset email</button>\n+    {{ form_end(requestForm) }}\n+{% endblock %}\n"
+                },
+                {
+                    "date": 1747812762946,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,21 @@\n+{% extends 'base.html.twig' %}\n+\n+{% block title %}Reset your password{% endblock %}\n+\n+{% block body %}\n+    {% for flash_error in app.flashes('reset_password_error') %}\n+        <div class=\"alert alert-danger\" role=\"alert\">{{ flash_error }}</div>\n+    {% endfor %}\n+    <h1>Réinitialisez votre mot de passe</h1>\n+\n+    {{ form_start(requestForm) }}\n+        {{ form_row(requestForm.email) }}\n+        <div>\n+            <small>\n+               Saisissez votre adresse e-mail et nous vous enverrons un lien pour réinitialiser votre mot de passe.\n+            </small>\n+        </div>\n+\n+        <button class=\"btn btn-primary\"></button>\n+    {{ form_end(requestForm) }}\n+{% endblock %}\n"
+                },
+                {
+                    "date": 1747812788996,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,21 @@\n+{% extends 'base.html.twig' %}\n+\n+{% block title %}Réinitialisez votre mot de passe{% endblock %}\n+\n+{% block body %}\n+    {% for flash_error in app.flashes('reset_password_error') %}\n+        <div class=\"alert alert-danger\" role=\"alert\">{{ flash_error }}</div>\n+    {% endfor %}\n+    <h1>Réinitialisez votre mot de passe</h1>\n+\n+    {{ form_start(requestForm) }}\n+        {{ form_row(requestForm.email) }}\n+        <div>\n+            <small>\n+               Saisissez votre adresse e-mail et nous vous enverrons un lien pour réinitialiser votre mot de passe.\n+            </small>\n+        </div>\n+\n+        <button class=\"btn btn-primary\">Envoyer un e-mail de réinitialisation du mot de passe</button>\n+    {{ form_end(requestForm) }}\n+{% endblock %}\n"
+                }
+            ],
+            "date": 1747811851238,
+            "name": "Commit-0",
+            "content": "{% extends 'base.html.twig' %}\n\n{% block title %}Reset your password{% endblock %}\n\n{% block body %}\n    {% for flash_error in app.flashes('reset_password_error') %}\n        <div class=\"alert alert-danger\" role=\"alert\">{{ flash_error }}</div>\n    {% endfor %}\n    <h1>Reset your password</h1>\n\n    {{ form_start(requestForm) }}\n        {{ form_row(requestForm.email) }}\n        <div class=\"\">\n            <small>\n                Enter your email address and we will send you a\n                link to reset your password.\n            </small>\n        </div>\n\n        <button class=\"btn btn-primary\">Send password reset email</button>\n    {{ form_end(requestForm) }}\n{% endblock %}\n"
+        }
+    ]
+}

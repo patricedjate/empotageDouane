@@ -1,0 +1,131 @@
+{% extends 'agentdashboardbase.html.twig' %}
+
+{% block title %}Details fiche
+{% endblock %}
+
+{% block body %}
+	<h1>Details Fiche</h1>
+
+	<div class="container mt-5">
+		<div class="row">
+			<div class="col">
+				<p>ministere du budget et du
+					<br>
+					portefeuille de l'etat
+					<br>
+					<span class="text-center">----------<span>
+							<br>
+							direction generale des douanes
+							<br><span class="text-center">----------<span><br>
+									direction des services douaniers 
+																																	            du port et des services speciaux
+									<br>
+									sous direction des service
+									<br>
+									douaniers du port
+									<br><span class="text-center">----------<span><br>
+											bureau export</p>
+									</div>
+									<div class="col">
+										<img src="{{asset("assets/img/logoDouane.png")}}" class="rounded mx-auto d-block" alt="..." width="80px">
+									</div>
+									<div class="col">
+										<p>republique de côte d'ivoire</p>
+										<p>Union - Discipline - Travail</p>
+
+									</div>
+
+								</div>
+
+								<hr class="mt-0">
+								<h5 class="mb-1">Informations personnels</h5>
+								<p class="mb-3"></p>
+								<div class="row">
+									<div class="col">
+										<p class="fs-4">Nom CDA :
+											<span class="fs-2 fw-bold">{{ fiche.nomCda }}</p>
+										</p>
+									</span>
+
+								</div>
+								<div class="col">
+									<p class="fs-4">Nom Exportateur :
+										<span class="fs-2 fw-bold">{{ fiche.nomExportateur }}</span>
+									</p>
+								</div>
+							</div>
+							<hr class="mt-2">
+							<h5 class="mb-1">Informations sur la marchandise</h5>
+							<p class="mb-3"></p>
+							<div class="row">
+								<div class="col">
+									<p class="fs-4">Nature de la marchandise:
+										<span class="fs-2 fw-bold">{{ fiche.natureMarchandise }}</span>
+									</p>
+								</div>
+								<div class="col">
+									<p class="fs-4">
+										Colis marchandise :
+										<span class="fs-2 fw-bold">{{ fiche.colisMarchandise }}</span>
+									</p>
+								</div>
+								<div class="col">
+									<p class="fs-4">
+										Poids Net Marchandise :
+										<span class="fs-2 fw-bold">{{ fiche.poidsNetMarchandise }}</span>
+									</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col">
+									<p class="fs-4">
+										Conditionnement Marchandise :
+										<span class="fs-2 fw-bold">{{ fiche.conditionnementMarchandise }}</span>
+									</p>
+								</div>
+								<div class="col">
+									<p class="fs-4">
+										Lieu Empotage Marchandise :
+										<span class="fs-2 fw-bold">{{ fiche.lieuEmpotageMarchandise }}</span>
+									</p>
+								</div>
+							</div>
+							<hr class="mt-2">
+							<h5 class="mb-1">Informations sur le conteneur</h5>
+							<p class="mb-3"></p>
+							<div class="row">
+								<div class="col">
+									<p class="fs-4">
+										N° Conteneurs :
+										<span class="fs-2 fw-bold">{{ fiche.nconteneurs }}</span>
+									</p>
+								</div>
+								<div class="col">
+									<p class="fs-4">
+										Type Tc :
+										<span class="fs-2 fw-bold">{{ fiche.typeTC }}<span></p>
+										</div>
+										<div class="col">
+											<p class="fs-4">
+												N° Plombs :
+												<span class="fs-2 fw-bold">{{ fiche.nplombs }}</span>
+											</p>
+										</div>
+									</p>
+								</div>
+							</div>
+							{% for fichier in fiche.fichiers %}
+    <div style="margin-bottom: 1em;">
+        <p><strong>{{ fichier }}</strong></p>
+        <iframe src="{{ asset('uploads/pdfs/' ~ fichier) }}"
+                width="100%" height="500px" style="border: 1px solid #ccc;"></iframe>
+        <a href="{{ asset('uploads/pdfs/' ~ fichier) }}" target="_blank">Ouvrir dans un nouvel onglet</a>
+    </div>
+{% endfor %}
+							<div class="row mb-3 mt-4">
+								<div class="col">
+									<a href="{{ path('agent_ListeFiche') }}" class="btn btn-warning mb-5 ">Revenir à la liste</a>
+								</div>
+								
+							</div>
+						{% endblock %}

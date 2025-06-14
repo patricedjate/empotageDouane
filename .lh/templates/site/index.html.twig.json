@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 23,
+            "activePatchIndex": 24,
             "patches": [
                 {
                     "date": 1674463880538,
@@ -100,6 +100,10 @@
                 {
                     "date": 1674468372569,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,8 +6,9 @@\n <p class=\"fs-1 text-center\">Faire Une Demande <br> De Suivie D'Empotage </p>\n <div class=\"row\">\n     <div class=\"col-4 mx-auto text-center\">\n         <img src=\"{{asset(\"assets/img/bas.png\")}}\" height=\"100px\">\n+        <a href\n     </div>\n </div\n  \n {% endblock %}\n"
+                },
+                {
+                    "date": 1747389528104,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n \t\t\t\t\t<ul class=\"navbar-nav ms-auto my-2 my-lg-0 btn btn-success \">\n \n \n \t\t\t\t\t\t<li class=\"nav-item dropdown \">\n-\t\t\t\t\t\t\t<a class=\"nav-link dropdown-toggle fs-5 \" href=\"{{path(\"chef_Index\")}}\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">\n+\t\t\t\t\t\t\t<a class=\"nav-link dropdown-toggle fs-5 \" href=\"{{path(\"app_login\")}}\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">\n \t\t\t\t\t\t\t\tSe Connecter\n \t\t\t\t\t\t\t</a>\n \t\t\t\t\t\t</li>\n \n"
                 }
             ],
             "date": 1674463880538,
